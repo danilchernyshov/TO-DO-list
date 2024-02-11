@@ -1,0 +1,24 @@
+import os
+from datetime import datetime
+
+def main():
+    today = datetime.today().strftime('%Y-%m-%d')
+    tasks = []
+
+    print("Добро пожаловать в Простой TO-DO лист!")
+    print("Введите ваши задачи. Для завершения введите 'done'.")
+
+    while True:
+        task = input("Введите задачу: ")
+        if task.lower() == 'done':
+            break
+        tasks.append(task)
+
+    with open(f"{today}_tasks.txt", "w") as file:
+        for task in tasks:
+            file.write(f"{task}\n")
+
+    print(f"Файл {today}_tasks.txt успешно создан.")
+
+if __name__ == "__main__":
+    main()
